@@ -12,8 +12,8 @@ class LDAPServer {
     ldap_set_option($this->con, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($this->con, LDAP_OPT_REFERRALS, 0);
 
-    $ldap_user = getenv("q2aldapuser");
-    $ldap_pass = getenv("q2aldappass");
+    $ldap_user = getenv("Q2A_LDAP_USER");
+    $ldap_pass = getenv("Q2A_LDAP_PASS");
 
     $bind = ldap_bind($this->con, $ldap_user, $ldap_pass);
   }
