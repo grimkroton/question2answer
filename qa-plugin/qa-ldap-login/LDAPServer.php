@@ -11,6 +11,11 @@ class LDAPServer {
     if (!is_resource($this->con)) trigger_error("Unable to connect to hostname", E_USER_WARNING);
     ldap_set_option($this->con, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($this->con, LDAP_OPT_REFERRALS, 0);
+
+    $ldap_user = getenv("q2aldapuser");
+    $ldap_pass = getenv("q2aldappass");
+
+    $bind = ldap_bind($this->con, $ldap_user, $ldap_pass);
   }
 
   public function bindToLDAP($user,$pass) {}
